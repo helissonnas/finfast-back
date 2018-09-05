@@ -1,0 +1,27 @@
+{
+  "name": "finfast-back",
+  "version": "1.0.0",
+  "description": "A application for personal finances administration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helissonnas/finfast-back.git"
+  },
+  "author": "helissonnas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helissonnas/finfast-back/issues"
+  },
+  "homepage": "https://github.com/helissonnas/finfast-back#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "supertest": "^3.2.0"
+  }
+}
