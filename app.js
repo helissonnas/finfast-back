@@ -7,6 +7,13 @@ const income = require('./src/income');
 const investment = require('./src/investment');
 const user = require('./src/user');
 
+
+const PORT = process.env.PORT || 3000;
+
+// connection to mongodb server.
+const dbConnect = require('./config/database');
+dbConnect();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
@@ -21,4 +28,6 @@ app.use('/income', income);
 app.use('/investment', investment);
 app.use('/user', user);
 
-app.listen(3000, () => console.log('Finfast is listening on port 3000!'));
+monggose.connect('mongodb://localhost/test');
+
+app.listen(PORT, () => console.log('Finfast is listening on port 3000!'));
