@@ -10,10 +10,6 @@ const schema = new mongoose.Schema({
         type: String,
         max: 100
     },
-    frequency: {
-        type: Number,
-        required = true
-    },
     value : {
         type: Number,
         required = true

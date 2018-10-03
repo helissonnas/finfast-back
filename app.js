@@ -4,7 +4,7 @@ const app = express();
 
 const expense = require('./src/expense');
 const income = require('./src/income');
-const investment = require('./src/investment');
+const type = require('./src/type');
 const user = require('./src/user');
 
 
@@ -25,7 +25,7 @@ app.use(function (req, res, next) {
 
 app.use('/expense', expense);
 app.use('/income', income);
-app.use('/investment', investment);
+app.use('/type', type);
 app.use('/user', user);
 
 monggose.connect('mongodb://localhost/test');

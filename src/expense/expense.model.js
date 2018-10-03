@@ -6,13 +6,10 @@ const schema = new mongoose.Schema({
         required: true,
         max: 240
     },
-    type : {
-        type: String,
-        max: 100
-    },
-    frequency: {
-        type: Number,
-        required = true
+    type_id : {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'type',
+        required: true
     },
     value : {
         type: Number,
