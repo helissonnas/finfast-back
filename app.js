@@ -12,9 +12,9 @@ const user = require('./src/user');
 
 
 const PORT = process.env.PORT || 3000;
-const ENVIROVIMENT = process.env.ENVIRON || 'production';
+const ENVIRONMENT= process.env.ENVIRON || 'dev';
 
-if (ENVIROVIMENT === 'production') {
+if (ENVIRONMENT === 'production') {
     app.use( cors() );
 }
 
@@ -36,4 +36,4 @@ app.use('/type', type);
 app.use('/user', user);
 
 
-app.listen(PORT, () => console.log('Finfast is listening on port 3000!'));
+app.listen(PORT, () => console.log(`Finfast is listening on port ${PORT} || Envirovment: ${ENVIRONMENT}`));

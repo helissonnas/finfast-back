@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const ENVIROVIMENT = process.env.ENVIRON || 'production';
+const ENVIRONMENT = process.env.ENVIRON || 'dev';
 
 mongoose.Promise = Promise;
 
 module.exports = () => {
-    if (ENVIROVIMENT === 'production') {
+    if (ENVIRONMENT === 'production') {
 
     } else {
         mongoose.connect('mongodb://localhost/test');
