@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
     },
     value : {
         type: Number,
-        required = true
+        required: true
     },
     user_id: {
         type: mongoose.SchemaTypes.ObjectId,

@@ -8,7 +8,7 @@ const schema = new mongoose.Schema({
     },
     frequency: {
         type: Number,
-        required = true
+        required: true
     },
     user_id: {
         type: mongoose.SchemaTypes.ObjectId,

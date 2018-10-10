@@ -28,6 +28,5 @@ app.use('/income', income);
 app.use('/type', type);
 app.use('/user', user);
 
-monggose.connect('mongodb://localhost/test');
 
 app.listen(PORT, () => console.log('Finfast is listening on port 3000!'));

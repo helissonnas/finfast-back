@@ -14,4 +14,4 @@ module.exports = function () {
     mongoose.connection.once('open', () => {
         console.log(`MongoDB succesfully connected to database ${mongoose.connection.db.databaseName}.`);
     });
-}
+};
