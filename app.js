@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
+
+const dbConnect = require('./config/database');
 
 const expense = require('./src/expense');
 const income = require('./src/income');
@@ -9,9 +12,13 @@ const user = require('./src/user');
 
 
 const PORT = process.env.PORT || 3000;
+const ENVIROVIMENT = process.env.ENVIRON || 'production';
+
+if (ENVIROVIMENT === 'production') {
+    app.use( cors() );
+}
 
 // connection to mongodb server.
-const dbConnect = require('./config/database');
 dbConnect();
 
 app.use(bodyParser.urlencoded({ extended: false }));
