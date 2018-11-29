@@ -11,12 +11,10 @@ const type = require('./src/type');
 const user = require('./src/user');
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 const ENVIRONMENT= process.env.ENVIRON || 'dev';
 
-if (ENVIRONMENT === 'production') {
-    app.use( cors() );
-}
+app.use( cors() );
 
 // connection to mongodb server.
 dbConnect();
