@@ -27,6 +27,17 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
     try {
+        const type = req.body.type;
+
+        if (!type.id || type.id === '') {
+            type.user_id = req.body.user_id;
+
+            const typeCreated = await Type.create(type);
+            req.body.type_id = typeCreated._id;
+        } else {
+            req.body.type_id = type.id;
+        }
+
         await Expense.create(req.body);
         res.status(201).json(req.body);
     } catch (err) {

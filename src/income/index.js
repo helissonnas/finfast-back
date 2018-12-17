@@ -4,14 +4,14 @@ const router = require('express').Router();
 const auth = require('../../config/auth');
 const authenticate = auth.auth;
 
-router.get('/:id', authenticate, Income.findOne);
+router.get('/:id', Income.findOne);
 
-router.get('/', authenticate, Income.findAll);
+router.get('/', Income.findAll);
 
-router.post('/', authenticate, Income.create);
+router.post('/', Income.create);
 
-router.put('/', authenticate, Income.update);
+router.put('/', Income.update);
 
-router.delete('/:id', authenticate, Income.deleteById);
+router.delete('/:id', Income.deleteById);
 
 module.exports = router;

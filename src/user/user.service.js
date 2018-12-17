@@ -32,8 +32,6 @@ exports.findOne = async (req, res) => {
 
 exports.create = async (req, res) => {
     try {
-        console.log(req);
-
         const expensesTemp = Object.assign(req.body.expenses, {});
         const incomesTemp = Object.assign(req.body.incomes, {});
 
