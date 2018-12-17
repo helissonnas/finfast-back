@@ -16,6 +16,7 @@ router.delete('/:id', User.deleteById);
 
 
 router.get('/:id/expenses', authenticate, User.findExpensesByUser);
+
 router.get('/:id/incomes', authenticate, User.findIncomesByUser);
 
 module.exports = router;

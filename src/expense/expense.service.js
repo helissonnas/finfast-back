@@ -82,7 +82,7 @@ exports.findByOwner = async (req, res) => {
     try {
         const userID = req.params.id;
         const expenses = await Expense.find({user_id: userID});
-
+        console.log(expenses);
         res.status(202).json(expenses);
     } catch (err) {
         res.status(500).send({message: err.message});

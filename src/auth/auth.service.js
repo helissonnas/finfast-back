@@ -34,7 +34,7 @@ exports.login = async function(req, res) {
 };
 
 exports.logout = (req, res, next) => {
-    res.clearCookie('access_token', req.cookies.access_token, {
+    res.clearCookie('access_token', req.headers.access_token, {
         maxAge: new Date(Date.now() + 10000000),
         httpOnly: false,
     });
