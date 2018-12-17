@@ -54,3 +54,14 @@ exports.update = async (req, res) => {
         res.status(500).send({message: err.message});
     }
 };
+
+exports.findByOwner = async (req, res) => {
+    try {
+        const userID = req.params.id;
+        const types = await Type.find({user_id: userID});
+
+        res.status(202).json(types);
+    } catch (err) {
+        res.status(500).send({message: err.message});
+    }
+};

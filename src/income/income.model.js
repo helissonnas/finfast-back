@@ -6,9 +6,10 @@ const schema = new mongoose.Schema({
         required: true,
         max: 240
     },
-    type : {
-        type: String,
-        max: 100
+    type_id : {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'type',
+        required: true
     },
     value : {
         type: Number,

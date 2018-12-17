@@ -1,6 +1,7 @@
 const User = require('./user.model');
 const Expense = require('../expense/expense.service');
 const Income = require('../income/income.service');
+const Type = require('../type/type.service');
 
 exports.findAll = async (req, res) => {
     try {
@@ -79,4 +80,8 @@ exports.findExpensesByUser = async (req, res) => {
 
 exports.findIncomesByUser = async (req, res) => {
     Income.findByOwner(req, res);
+};
+
+exports.findTypesByUser  = async (req, res) => {
+    Type.findByOwner(req, res);
 };

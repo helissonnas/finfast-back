@@ -1,14 +1,18 @@
 const Expense = require('./expense.service');
 const router = require('express').Router();
 
-router.get('/:id', Expense.findOne);
 
-router.get('/', Expense.findAll);
+const auth = require('../../config/auth');
+const authenticate = auth.auth;
 
-router.post('/', Expense.create);
+router.get('/:id', authenticate, Expense.findOne);
 
-router.put('/', Expense.update);
+router.get('/', authenticate, Expense.findAll);
 
-router.delete('/:id', Expense.deleteById);
+router.post('/', authenticate, Expense.create);
+
+router.put('/', authenticate, Expense.update);
+
+router.delete('/:id', authenticate, Expense.deleteById);
 
 module.exports = router;

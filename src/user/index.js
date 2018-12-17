@@ -19,4 +19,6 @@ router.get('/:id/expenses', authenticate, User.findExpensesByUser);
 
 router.get('/:id/incomes', authenticate, User.findIncomesByUser);
 
+router.get('/:id/types', authenticate, User.findTypesByUser);
+
 module.exports = router;

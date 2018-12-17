@@ -1,14 +1,17 @@
 const Income = require('./income.service');
 const router = require('express').Router();
 
-router.get('/:id', Income.findOne);
+const auth = require('../../config/auth');
+const authenticate = auth.auth;
 
-router.get('/', Income.findAll);
+router.get('/:id', authenticate, Income.findOne);
 
-router.post('/', Income.create);
+router.get('/', authenticate, Income.findAll);
 
-router.put('/', Income.update);
+router.post('/', authenticate, Income.create);
 
-router.delete('/:id', Income.deleteById);
+router.put('/', authenticate, Income.update);
+
+router.delete('/:id', authenticate, Income.deleteById);
 
 module.exports = router;
