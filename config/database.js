@@ -7,7 +7,7 @@ module.exports = () => {
     if (ENVIRONMENT === 'production') {
 
     } else {
-        mongoose.connect('mongodb://localhost/test');
+        mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true });
 
         mongoose.connection.on('error', (e) => {
             if (e.message.code === 'ETIMEDOUT') {

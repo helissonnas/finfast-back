@@ -9,6 +9,7 @@ const expense = require('./src/expense');
 const income = require('./src/income');
 const type = require('./src/type');
 const user = require('./src/user');
+const auth = require('./src/auth');
 
 
 const PORT = process.env.PORT || 3030;
@@ -32,6 +33,6 @@ app.use('/expense', expense);
 app.use('/income', income);
 app.use('/type', type);
 app.use('/user', user);
-
+app.use('/auth', auth);
 
 app.listen(PORT, () => console.log(`Finfast is listening on port ${PORT} || Envirovment: ${ENVIRONMENT}`));

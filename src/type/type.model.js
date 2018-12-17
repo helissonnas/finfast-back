@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
         max: 240
     },
     frequency: {
-        type: Number,
+        type: String,
         required: true
     },
     user_id: {

@@ -1,4 +1,5 @@
 const Expense = require('./expense.model');
+const Type = require('../type/type.model');
 
 exports.findOne = async (req, res) => {
     try {
@@ -33,6 +34,28 @@ exports.create = async (req, res) => {
     }
 };
 
+exports.createMany = async (expenses, user_id) => {
+  if (expenses && expenses.length > 0) {
+      expenses.forEach(async exp => {
+          const type = exp.type;
+          let tyId;
+          if (!type.id || type.id === '') {
+              type.user_id = user_id;
+              const typeCreated = await Type.create(type);
+              tyId = typeCreated._id;
+          } else {
+              tyId = type.id;
+          }
+
+          exp.user_id = user_id;
+          exp.type_id = tyId;
+
+          console.log('Exp', exp);
+          Expense.create(exp);
+      });
+  }
+};
+
 exports.deleteById = async (req, res) => {
     try {
         const expenseID = req.params.id;
@@ -50,6 +73,17 @@ exports.update = async (req, res) => {
 
         const updatedExpense = await Expense.findOne(expenseID);
         res.status(202).json(updatedExpense);
+    } catch (err) {
+        res.status(500).send({message: err.message});
+    }
+};
+
+exports.findByOwner = async (req, res) => {
+    try {
+        const userID = req.params.id;
+        const expenses = await Expense.find({user_id: userID});
+
+        res.status(202).json(expenses);
     } catch (err) {
         res.status(500).send({message: err.message});
     }

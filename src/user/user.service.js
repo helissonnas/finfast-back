@@ -1,11 +1,16 @@
 const User = require('./user.model');
+const Expense = require('../expense/expense.service');
+const Income = require('../income/income.service');
 
 exports.findAll = async (req, res) => {
     try {
         const result = await User.find({});
+        console.log(result);
+
         if (result.length === 0) return res.status(404).send({message: 'Users not found'});
         res.status(200).json(result);
     } catch (err) {
+        console.log(err);
         res.status(500).send({message: err.message});
     }
 };
@@ -26,9 +31,22 @@ exports.findOne = async (req, res) => {
 
 exports.create = async (req, res) => {
     try {
-        await User.create(req.body);
-        res.status(201).json(req.body);
+        console.log(req);
+
+        const expensesTemp = Object.assign(req.body.expenses, {});
+        const incomesTemp = Object.assign(req.body.incomes, {});
+
+        const userSaved = new User(req.body);
+        await userSaved.save();
+
+        console.log(userSaved);
+        await Expense.createMany(expensesTemp, userSaved._id);
+        await Income.createMany(incomesTemp, userSaved._id);
+
+        console.log(userSaved);
+        res.status(201).json(userSaved);
     } catch (err) {
+        console.log(err);
         res.status(500).send({message: err.message});
     }
 };
@@ -36,7 +54,7 @@ exports.create = async (req, res) => {
 exports.deleteById = async (req, res) => {
     try {
         const userID = req.params.id;
-        await User.deleteById(userID);
+        await User.findByIdAndDelete(userID);
         res.status(202).send({message: 'User deleted'});
     } catch (err) {
         res.status(500).send({message: err.message});
@@ -53,4 +71,12 @@ exports.update = async (req, res) => {
     } catch (err) {
         res.status(500).send({message: err.message});
     }
+};
+
+exports.findExpensesByUser = async (req, res) => {
+    Expense.findByOwner(req, res);
+};
+
+exports.findIncomesByUser = async (req, res) => {
+    Income.findByOwner(req, res);
 };

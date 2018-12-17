@@ -1,14 +1,21 @@
 const User = require('./user.service');
 const router = require('express').Router();
 
-router.get('/:id', User.findOne);
+const auth = require('../../config/auth');
+const authenticate = auth.auth;
+
+router.get('/:id', authenticate, User.findOne);
 
 router.get('/', User.findAll);
 
 router.post('/', User.create);
 
-router.put('/', User.update);
+router.put('/', authenticate, User.update);
 
 router.delete('/:id', User.deleteById);
+
+
+router.get('/:id/expenses', authenticate, User.findExpensesByUser);
+router.get('/:id/incomes', authenticate, User.findIncomesByUser);
 
 module.exports = router;
