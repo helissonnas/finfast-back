@@ -1,33 +1,32 @@
 {
   "name": "finfast-back",
   "version": "1.0.0",
-  "description": "A application for personal finances administration",
+  "description": "Finfast backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec sucrase-node ./src/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/helissonnas/finfast-back.git"
   },
-  "author": "helissonnas",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/helissonnas/finfast-back/issues"
   },
   "homepage": "https://github.com/helissonnas/finfast-back#readme",
   "dependencies": {
-    "bcrypt": "^3.0.1",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "jsonwebtoken": "^8.4.0",
-    "memory-cache": "^0.2.0",
-    "mongoose": "^5.2.15",
-    "morgan": "^1.9.0",
-    "object-assign": "^4.1.1"
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
   },
   "devDependencies": {
-    "supertest": "^3.2.0"
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.7.0",
+    "sucrase": "^3.21.0"
   }
 }

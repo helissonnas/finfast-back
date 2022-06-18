@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  finfast-db:
+    container_name: finfast-db
+    build:
+      context: database
+    volumes:
+      - /Users/helissonnas/data/finfast:/var/lib/postgresql/data
+    environment:
+      - DEFAULT_COLLATION=en_US.UTF-8
+      - DEFAULT_CTYPE=en_US.UTF-8
