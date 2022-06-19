@@ -10,3 +10,5 @@ services:
     environment:
       - DEFAULT_COLLATION=en_US.UTF-8
       - DEFAULT_CTYPE=en_US.UTF-8
+    ports:
+      - '5432:5432'
