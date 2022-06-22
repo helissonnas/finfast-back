@@ -17,11 +17,16 @@ router.get('/', (req, res) => {
   }
 
   Transaction.findAndCountAll({
-    offset: validatedPage,
+    offset: validatedPage * validatedPageSize,
     limit: validatedPageSize,
     include: TransactionClass,
   }).then(
-    (result) => res.send({ ...result, current_page: validatedPage }),
+    (result) =>
+      res.send({
+        ...result,
+        total_pages: Math.ceil(result.count / validatedPageSize),
+        current_page: validatedPage,
+      }),
     (reason) => res.status(500).send(reason)
   );
 });
