@@ -6,10 +6,10 @@ const Recurrence = database.define('recurrence', {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primatyKey: true,
+    primaryKey: true,
   },
   type: {
-    type: Sequelize.STEING,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   repeatUntil: {

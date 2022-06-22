@@ -4,7 +4,7 @@ import User from './User';
 import Recurrence from './Recurrence';
 import TransactionClass from './TransactionClass';
 
-const Transaction = database.define('transaction_subclass', {
+const Transaction = database.define('transaction', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -25,8 +25,8 @@ const Transaction = database.define('transaction_subclass', {
   },
 });
 
-Transaction.belogsTo(User);
-Transaction.belogsTo(TransactionClass, { foreignKey: 'class_id' });
+Transaction.belongsTo(User);
+Transaction.belongsTo(TransactionClass, { foreignKey: 'class_id' });
 Transaction.hasOne(Recurrence);
 
 module.exports = Transaction;

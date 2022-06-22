@@ -20,7 +20,7 @@ const TransactionSubClass = database.define('transaction_subclass', {
   },
 });
 
-TransactionSubClass.belogsTo(Family);
-TransactionSubClass.belogsTo(TransactionClass, { foreignKey: 'class_id' });
+TransactionSubClass.belongsTo(Family);
+TransactionSubClass.belongsTo(TransactionClass, { foreignKey: 'class_id' });
 
 module.exports = TransactionSubClass;

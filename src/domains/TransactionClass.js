@@ -19,6 +19,6 @@ const TransactionClass = database.define('transaction_class', {
   },
 });
 
-TransactionClass.belogsTo(Family);
+TransactionClass.belongsTo(Family);
 
 module.exports = TransactionClass;
