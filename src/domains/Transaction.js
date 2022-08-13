@@ -27,6 +27,5 @@ const Transaction = database.define('transaction', {
 
 Transaction.belongsTo(User);
 Transaction.belongsTo(TransactionClass, { foreignKey: 'class_id' });
-Transaction.hasOne(Recurrence);
 
 module.exports = Transaction;
